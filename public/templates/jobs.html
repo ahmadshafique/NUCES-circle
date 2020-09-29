@@ -1,0 +1,129 @@
+<div ng-controller="JobsCtrl" ng-init="getAllUserJobsData()">
+	<div class="panel panel-default container col-md-10 col-md-offset-1" id="homeContainer">
+		<div class="row" style="padding-top: 10px;">
+			<div class="col-xs-11">
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-success" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Jobs Recommended</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+							<div ng-repeat="data in jobData">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="col-xs-6" style="padding-left: 0;">
+											<h4>{{data.title}}</h4>
+										</div>
+										<div class="col-xs-6">
+											<!-- <button class="btn btn-danger pull-right" ng-click="deleteCall(data)">Delete</button> -->
+										</div>
+									</div>
+								</div>
+								<div ng-if="jobRecommends" class="row">
+									<div class="col-xs-12">
+										<h4>
+											<small>{{data.company}}</small>
+										</h4>
+									</div>
+								</div>
+								<div ng-if="jobRecommends" class="row">
+									<div class="col-xs-12">
+										<h4>
+											<small>{{data.location}}</small>
+										</h4>
+									</div>
+								</div>
+								<div ng-if="jobRecommends" class="row">
+									<div class="col-xs-12">
+										<h4>
+											<small>{{data.fromdate | date:"dd-MMM-yyyy"}} To
+												{{data.todate | date:"dd-MMM-yyyy"}}</small>
+										</h4>
+									</div>
+								</div>
+								<div ng-if="jobRecommends" class="row">
+									<div class="col-xs-12">
+										<h4>
+											<small>{{data.detailslink}}</small>
+										</h4>
+									</div>
+								</div>
+								<div ng-if="jobRecommends" class="row">
+									<div class="col-xs-12 text-center">
+										<button class="btn btn-primary" ng-click="applyJobs(data.jobid)">Apply Job</button>
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class="panel-footer text-center"></div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-info" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Jobs Applied</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+
+							<div ng-repeat="data in jobsApplied">
+								<div ng-if="jobApply" class="col-xs-2">
+									<img alt="Profile Picture" src="images/default-org.png" height="50" width="50">
+								</div>
+								<div class="col-xs-10">
+									<!-- col-xs-pull-3 -->
+									<h4 class="text-primary">{{data.title}}</h4>
+									<div ng-if="jobApply" class="row">
+										<div class="col-xs-6" style="margin-top: -15px;">
+											<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{data.company}}</h5>
+										</div>
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class=" panel-footer text-center">
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<div class="col-xs-11 col-xs-offset-1" style="padding-top: 2%">
+					<div class="panel panel-success" style="padding-top: 2%">
+						<div class="panel-heading"><strong>NUCES-circle</strong></div>
+						<div class="panel-body">NUCES-circle is a professional network where students can build
+							their professional profile highlighting their accomplishments, skills, experiences,
+							interests and semester projects. Students can build their circle by connecting with
+							other members and also get endorsed by other fellows or instructors present in
+							NUCES-circle. It will also help recruiters searching most appropriate candidate from
+							the campus.</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

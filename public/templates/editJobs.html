@@ -1,0 +1,78 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">Post Jobs</h3>
+	</div>
+
+	<div class="modal-body">
+		<form>
+			<div class="row">
+				<div class="col-md-2">
+					<h4>Title</h4>
+				</div>
+				<div class="col-md-8">
+					<div class="input-group" style="width: 100%;">
+						<input type="text" class="form-control" placeholder="Title" name="title" ng-model="title"
+							required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<h4>Location</h4>
+				</div>
+				<div class="col-md-8">
+					<div class="input-group" style="width: 100%;">
+						<input type="text" class="form-control" placeholder="Location" name="location"
+							ng-model="location" required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<h4>From</h4>
+				</div>
+				<div class="col-md-3">
+					<p class="input-group">
+						<input type="text" onkeydown="return false" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+							ng-model="fromdate" is-open="datepickers.from" min-date="today" show-weeks="false"
+							datepicker-options="dateOptions" ng-required="true" show-button-bar="true"
+							close-text="Close" required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open($event,'from')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<h4>To</h4>
+				</div>
+				<div class="col-md-3">
+					<p class="input-group">
+						<input type="text" onkeydown="return false" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+							ng-model="todate" is-open="datepickers.to" min-date="fromdate" show-weeks="false"
+							datepicker-options="dateOptions" ng-required="true" show-button-bar="true"
+							close-text="Close" required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open($event,'to')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<h4>Details</h4>
+				</div>
+				<div class="col-md-8">
+					<textarea class="form-control" rows="10" ng-model="details"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<div class="pull-left text-danger">{{formError}}</div>
+		<button class="btn btn-primary" ng-click="okay()">Save</button>
+		<button ng-if="deleteOption" class="btn btn-danger" ng-click="deleteCall()">Delete</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</div>

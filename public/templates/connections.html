@@ -1,0 +1,189 @@
+<div ng-controller="ConnectionCtrl" ng-init="getAllData()">
+	<div class="panel panel-default container col-md-10 col-md-offset-1" id="homeContainer">
+		<div class="row" style="padding-top: 10px;">
+			<div class="col-xs-11">
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-warning" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Pending Connection Requests</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+							<div ng-repeat="request in userConnectionRequestsReceived">
+								<div ng-if="requestsReceived" class="col-xs-2">
+									<img alt="Profile Picture" src="images/default-pic1.png" height="50" width="50">
+								</div>
+								<div class="col-xs-10">
+									<!-- col-xs-pull-3 -->
+									<h4 class="text-primary">{{request.fullname}}</h4>
+									<!--{{request.name}}-->
+									<div ng-if="requestsReceived" class="row">
+										<div class="col-xs-6" style="margin-top: -15px;">
+											<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{request.email}}</h5>
+										</div>
+										<button type="button" class="btn btn-success"
+											ng-click="acceptRequest(request.userid)" data-toggle="tooltip"
+											title="To accept">Accept</button>
+										<button type="button" class="btn btn-warning "
+											ng-click="cancelRequest(request.userid)" data-toggle="tooltip"
+											title="To cancel">Cancel</button>
+
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class="panel-footer text-center"></div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-success" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Connected in your network:</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+							<div ng-repeat="data in connectedList">
+								<div ng-if="connected" class="col-xs-2">
+									<img alt="Profile Picture" src="images/default-pic1.png" height="50" width="50">
+								</div>
+								<div class="col-xs-10">
+									<!-- col-xs-pull-3 -->
+									<h4 class="text-primary">{{data.fullname}}</h4>
+									<div ng-if="connected" class="row">
+										<div class="col-xs-6" style="margin-top: -15px;">
+											<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{data.email}}</h5>
+										</div>
+										<button type="button" class="btn btn-success"
+											ng-click="disconnectUsers(data.userid)" data-toggle="tooltip"
+											title="To disconnect">Connected</button>
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class="panel-footer text-center"></div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-info" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Connection Requests Sent</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+							<div ng-repeat="request in userConnectionRequestsSent">
+								<div ng-if="requestsSent" class="col-xs-2">
+									<img alt="Profile Picture" src="images/default-pic1.png" height="50" width="50">
+								</div>
+								<div class="col-xs-10">
+									<!-- col-xs-pull-3 -->
+									<h4 class="text-primary">{{request.fullname}}</h4>
+									<!--{{request.name}}-->
+									<div ng-if="requestsSent" class="row">
+										<div class="col-xs-6" style="margin-top: -15px;">
+											<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{request.email}}</h5>
+										</div>
+										<button type="button" class="btn btn-warning "
+											ng-click="cancelRequest(request.userid)" data-toggle="tooltip"
+											title="To cancel">Cancel Request</button>
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class="panel-footer text-center"></div>
+					</div>
+				</div>
+				<!--</div>-->
+
+
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-info" style="padding: 0;">
+						<div class="panel-heading">
+							<h4>Potentially interested in:</h4>
+						</div>
+					</div>
+				</div>
+				<!--</div>-->
+				<!--<div class="row">-->
+				<div class="col-xs-11 col-xs-offset-1">
+					<div class="panel panel-default" style="padding: 0;">
+						<div class="panel-body">
+							<div ng-repeat="data in unconnectedList">
+								<div ng-if="connectRecommends" class="col-xs-2">
+									<img alt="Profile Picture" src="images/default-pic1.png" height="50" width="50">
+								</div>
+								<div class="col-xs-10">
+									<!-- col-xs-pull-3 -->
+									<h4 class="text-primary">{{data.fullname}}</h4>
+									<div ng-if="connectRecommends" class="row">
+										<div class="col-xs-6" style="margin-top: -15px;">
+											<h5>&nbsp;&nbsp;&nbsp;&nbsp;{{data.email}}</h5>
+										</div>
+										<button type="button" class="btn btn-primary"
+											ng-click="connectUsers(data.userid)" data-toggle="tooltip"
+											title="To connect">Connect</button>
+									</div>
+								</div>
+								</br>
+								</br>
+								</br>
+								</br>
+							</div>
+						</div>
+						<div class="panel-footer text-center"></div>
+					</div>
+				</div>
+				<!--</div>-->
+
+				<div class="col-xs-11 col-xs-offset-1" style="padding-top: 2%">
+					<div class="panel panel-success" style="padding-top: 2%">
+						<div class="panel-heading"><strong>NUCES-circle</strong></div>
+						<div class="panel-body">NUCES-circle is a professional network where students can build
+							their professional profile highlighting their accomplishments, skills, experiences,
+							interests and semester projects. Students can build their circle by connecting with
+							other members and also get endorsed by other fellows or instructors present in
+							NUCES-circle. It will also help recruiters searching most appropriate candidate from
+							the campus.</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

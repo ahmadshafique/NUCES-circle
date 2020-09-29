@@ -1,0 +1,25 @@
+<div class="panel-footer text-center">
+
+    <div ng-repeat="applicant in jobApplicantsData">
+        <div class="row">
+            <div ng-if="jobApplicants" class="col-md-2">
+                <img alt="Profile Picture" src="images/default-pic1.png" height="50" width="50">
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h4 class="text-primary">{{applicant.fullname}}</h4>
+                    </div>
+                </div>
+                <div ng-if="jobApplicants" class="row">
+                    <div class="col-xs-6" style="margin-top: -15px;">
+                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;{{applicant.headline}}</h5>
+                    </div>
+                </div>
+            </div>
+            </br>
+            </br>
+        </div>
+
+    </div>
+</div>

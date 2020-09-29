@@ -1,0 +1,74 @@
+<div>
+	<div class="modal-header">
+		<h3 class="modal-title">Add Experience</h3>
+	</div>
+
+	<div class="modal-body">
+		<form>
+			<div class="row">
+				<div class="col-md-2">
+					<h4>Company</h4>
+				</div>
+				<div class="col-md-8">
+					<form class="navbar-form" role="search">
+						<div class="input-group" style="width: 100%;">
+							<input type="text" class="form-control" placeholder="Search" name="searchBox"
+								ng-model="selectedCompany"
+								typeahead="name as name.name for name in companies | filter:$viewValue | limitTo:8"
+								required>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2">
+					<h4>From</h4>
+				</div>
+				<div class="col-md-3">
+					<p class="input-group">
+						<input type="text" onkeydown="return false" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+							ng-model="fromdate" is-open="datepickers.from" show-weeks="false"
+							datepicker-options="dateOptions" ng-required="true" show-button-bar="true"
+							close-text="Close" required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open($event,'from')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+				<div class="col-md-2">
+					<h4>To</h4>
+				</div>
+				<div class="col-md-3">
+					<p class="input-group">
+						<input type="text" onkeydown="return false" class="form-control" datepicker-popup="dd-MMMM-yyyy"
+							ng-model="todate" is-open="datepickers.to" min-date="fromdate" show-weeks="false"
+							datepicker-options="dateOptions" ng-required="true" show-button-bar="true"
+							close-text="Close" required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open($event,'to')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2">
+					<h4>Designation</h4>
+				</div>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="designation" placeholder="Designation" required>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<div class="pull-left text-danger">{{formError}}</div>
+		<button class="btn btn-primary" ng-click="okay()">Save</button>
+		<button ng-if="deleteOption" class="btn btn-danger" ng-click="deleteCall()">Delete</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</div>

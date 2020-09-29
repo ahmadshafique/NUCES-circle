@@ -1,0 +1,60 @@
+<div class="row" ng-controller="HomeController" ng-init="loadData()">
+	<div class="col-md-12 header text-center">
+
+		<div class="col-md-2 col-md-push-1">
+			<a href="#"><img alt="NUCES-circle" src="images/logo_nu_circle.png"></a>
+		</div>
+
+		<div class="col-md-3 col-md-push-1">
+			<button class="btn btn-primary" ng-click="tabActive('home_post')">Home</button>
+			<button class="btn btn-primary" ng-click="tabActive('profile')">Profile</button>
+			<button class="btn btn-primary" ng-click="tabActive('connections')">Connections</button>
+			<button class="btn btn-primary" ng-click="tabActive('jobs')">Jobs</button>
+		</div>
+
+		<div class="col-md-4 col-md-push-1" style="margin-top: -7px;">
+			<form class="navbar-form" role="search" ng-submit="showSearchResult()">
+				<div class="input-group" style="width: 100%;">
+					<input type="text" class="form-control" placeholder="Search" name="searchBox"
+						ng-model="selectedInput" ng-change="searchData(selectedInput)"
+						typeahead="name as name.name for name in searchInputs | filter:$viewValue | limitTo:8">
+					<div class="input-group-btn" style="padding-left:0px;">
+						<button class="btn btn-primary" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-md-1 col-md-push-1">
+			<span class="dropdown" dropdown> <a href class="dropdown-toggle" dropdown-toggle> <img
+						src="images/default-pic1.png" height="30" width="30">
+				</a>
+				<ul class="dropdown-menu" style="top: inherit;">
+					<li ng-repeat="option in userDropdownOptions"><a href
+							ng-click="$parent.userDropdownSelected(option)">{{option}}</a></li>
+				</ul>
+			</span>
+		</div>
+
+	</div>
+
+	<div class="col-md-12 container-fluid">
+		<div ng-switch on="showTabData">
+			<div ng-switch-when="true">
+				<div ng-include="getTemplate()"></div>
+			</div>
+			<div ng-switch-when="false">
+				<div ng-if="showUserResult" ng-include="'templates/searchProfile.html'"
+					ng-controller="SearchProfileController" ng-init="getResultData()"></div>
+				<div ng-if="showOrgResult" ng-include="'templates/searchOrg.html'"
+					ng-controller="OrgProfileController"
+					ng-init="getOrgSearchData()"></div>
+				<div ng-if="showJobsResult" ng-include="'templates/searchJob.html'" 
+					ng-controller="JobsCtrl"
+					ng-init="getJobSearchData()"></div>
+			</div>
+		</div>
+	</div>
+</div>
